@@ -84,23 +84,23 @@ Open File Explorer and paste `%APPDATA%\Claude\` into the address bar. You will 
 
 YouTube
 
-* [How to obtain the Housekeeper Bee API key](https://youtu.be/x7zshcqJTlY?si=3mgp6eS1h3IDHNOh)  <img style="width:10" valign="middle" src="https://icons.iconarchive.com/icons/paomedia/small-n-flat/48/star-icon.png" ><img style="width:10" valign="middle" src="https://icons.iconarchive.com/icons/paomedia/small-n-flat/48/star-icon.png" >      
-* [Set Housekeeper Bee app server sleep schedule]() <font color="gray">- *Coming Soon*</font>   
+* [How to obtain the Housekeeper Bee API key](https://youtu.be/x7zshcqJTlY?si=3mgp6eS1h3IDHNOh)  <img style="width:5px;" valign="middle" src="https://icons.iconarchive.com/icons/paomedia/small-n-flat/48/star-icon.png" ><img style="width:5px;" valign="middle" src="https://icons.iconarchive.com/icons/paomedia/small-n-flat/48/star-icon.png" >      
+* [Set Housekeeper Bee app server sleep schedule](https://youtu.be/mp-i6p8VztY?si=cXiPKha7JMGL2XKF)    
 * [Retrieve Housekeeper Bee app server health status](https://youtu.be/gw5v88TVHnk?si=l6e4trW2sS8livto)        
-* [Find storage box]() <font color="gray">- *Coming Soon*</font>          
-* [Rename storage box]() <font color="gray">- *Coming Soon*</font>        
-* [Delete multiple storage boxes]() <font color="gray">- *Coming Soon*</font>     
-* [Move multiple storage boxes to new location]() <font color="gray">- *Coming Soon*</font>     
-* [Edit storage box's description - Text]() <font color="gray">- *Coming Soon*</font>     
-* [Edit storage box's description - Image]() <font color="gray">- *Coming Soon*</font>     
-* [Rename multiple storage locations]() <font color="gray">- *Coming Soon*</font>     
-* [Verify and Renew the Session Token]() <font color="gray">- *Coming Soon*</font>       
-* [Voice input and translate to different languages to look up storage boxes.](https://youtu.be/y77HvV44JtE?si=sNPlSAOAilGdjC8l) <img style="width:10" valign="middle" src="https://icons.iconarchive.com/icons/paomedia/small-n-flat/48/star-icon.png" >     
+* [Use AI object recognition to update the stored items](https://youtu.be/bToddC73sfo?si=aQu52ObRZtSdGfVN)<img style="width:5px;" valign="middle" src="https://icons.iconarchive.com/icons/paomedia/small-n-flat/48/star-icon.png" ><img style="width:5px;" valign="middle" src="https://icons.iconarchive.com/icons/paomedia/small-n-flat/48/star-icon.png" >                    
+* [Batch rename storage boxes and change location](https://youtu.be/cd9snhRSTf8?si=f6VPrmQUWV-NjR2I)      
+* [Relocate the storage boxes](https://youtu.be/ae4Awb_Q4gk?si=AlwkhX_sWMBxsrct)      
+* [Add items to storage box description](https://youtu.be/7rqJVQMm_D0?si=356MRrNSL0tV7Wkl)      
+* [Rename multiple storage locations](https://youtu.be/HDY6c1wTevo?si=8WathM6DpxpuV8UG)      
+* [Verify and Renew the Session Token](https://youtu.be/Tt-v82Cc2hQ?si=csRWxtuDni-CWNLY)        
+* [Voice input and translate to different languages to look up storage boxes.](https://youtu.be/y77HvV44JtE?si=sNPlSAOAilGdjC8l) <img style="width:5px;" valign="middle" src="https://icons.iconarchive.com/icons/paomedia/small-n-flat/48/star-icon.png" >     
+* [Translation](https://youtu.be/Z4LLwdZtkb0?si=wTnGxkmHpmy5IqNo)    
+* [Export storage boxes and locations raw data](https://youtu.be/0RxOJnAOrjQ?si=oJu-XQnxUxn9cMWH)    
 
 <br><br>
 ---
 *vNetic workshop - 2025*   
-*Last Update: 2025/07/14 by Thomas Leung*
+*Last Update: 2025/08/01 by Thomas Leung*
 
 
 
