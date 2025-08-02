@@ -95,12 +95,15 @@ YouTube
 * [Verify and Renew the Session Token](https://youtu.be/Tt-v82Cc2hQ?si=csRWxtuDni-CWNLY)        
 * [Voice input and translate to different languages to look up storage boxes.](https://youtu.be/y77HvV44JtE?si=sNPlSAOAilGdjC8l) <img style="width:10px;" valign="middle" src="https://icons.iconarchive.com/icons/paomedia/small-n-flat/48/star-icon.png" >     
 * [Translation](https://youtu.be/Z4LLwdZtkb0?si=wTnGxkmHpmy5IqNo)    
-* [Export storage boxes and locations raw data](https://youtu.be/0RxOJnAOrjQ?si=oJu-XQnxUxn9cMWH)    
+* [Export storage boxes and locations raw data](https://youtu.be/0RxOJnAOrjQ?si=oJu-XQnxUxn9cMWH)       
+* [Create Executive Summary & Infographic](https://youtu.be/LI0eJYVxSjs?si=XSVWChnA25IJt_iG)<img style="width:10px;" valign="middle" src="https://icons.iconarchive.com/icons/paomedia/small-n-flat/48/star-icon.png" >    
+
+
 
 <br><br>
 ---
 *vNetic workshop - 2025*   
-*Last Update: 2025/08/01 by Thomas Leung*
+*Last Update: 2025/08/02 by Thomas Leung*
 
 
 
