@@ -3,17 +3,17 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { z } from "zod"
 import { promises as fs } from "fs"
 import ExcelJS from 'exceljs'
-import axios from 'axios'
+import axios, { HttpStatusCode } from 'axios'
 import open from 'open';
 import { readFile, writeFile } from "fs/promises"
 import jwt from 'jsonwebtoken'
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';   //allow use sign-signed cert
+
 const apiKey = process.env.HOUSEKEEPER_BEE_USER_API_KEY
-const url = process.env.HOUSEKEEPER_BEE_URL
-const appPort = process.env.HOUSEKEEPER_BEE_PORT
-const exportFilePath = process.env.HOUSEKEEPER_BEE_OUTPUT_FILE_PATH
+const serverUrl = process.env.HOUSEKEEPER_BEE_SERVER_URL
 const adminUrl = process.env.HOUSEKEEPER_BEE_ADMIN_URL
-const adminPort = process.env.HOUSEKEEPER_BEE_ADMIN_PORT
+const exportFilePath = process.env.HOUSEKEEPER_BEE_OUTPUT_FILE_PATH
 
 //=========================================================================================================================================================================
 // FUNCTIONS
@@ -24,11 +24,9 @@ const adminPort = process.env.HOUSEKEEPER_BEE_ADMIN_PORT
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 const isEnvVariablesOkay = () => {
   if (!apiKey) { throw new Error("\"HOUSEKEEPER_BEE_USER_API_KEY\" is not defined in environment variables.") }
-  if (!url) { throw new Error("Housekeeper Bee App \"HOUSEKEEPER_BEE_URL\" is not defined in environment variables.") }
-  if (!appPort) { throw new Error("Housekeeper Bee App \"HOUSEKEEPER_BEE_PORT\" is not defined in environment variables.") }
-  if (!exportFilePath) { throw new Error("Housekeeper Bee App \"HOUSEKEEPER_BEE_OUTPUT_FILE_PATH\" is not defined in environment variables.") }
+  if (!serverUrl) { throw new Error("Housekeeper Bee App \"HOUSEKEEPER_BEE_SERVER_URL\" is not defined in environment variables.") }
   if (!adminUrl) { throw new Error("Housekeeper Bee App \"HOUSEKEEPER_BEE_ADMIN_URL\" is not defined in environment variables.") }
-  if (!adminPort) { throw new Error("Housekeeper Bee App \"HOUSEKEEPER_BEE_ADMIN_PORT\" is not defined in environment variables.") }
+  if (!exportFilePath) { throw new Error("Housekeeper Bee App \"HOUSEKEEPER_BEE_OUTPUT_FILE_PATH\" is not defined in environment variables.") }
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -202,12 +200,13 @@ const isTokenExpired = (decoded) => {
   return decoded.exp < currentTime; // Returns true if expired
 };
 
+
 //=========================================================================================================================================================================
 // Main - Tools 
 //=========================================================================================================================================================================
 const server = new McpServer({
   name: "Houserkeeper Bee MCP Server",
-  version: "1.0.0",
+  version: "1.1.0",
 })
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -225,7 +224,7 @@ server.registerTool(
 
     isEnvVariablesOkay()
 
-    const response = await fetch(`http://${url}:${appPort}/api/housekeeping/storage/mcp/findStorageBox/${keywords}/${matchAll}`, {
+    const response = await fetch(`${serverUrl}/api/housekeeping/storage/mcp/findStorageBox/${keywords}/${matchAll}`, {
       headers: {
         'x-api-key': `${apiKey}`,
       },
@@ -257,7 +256,7 @@ server.registerTool(
 
     isEnvVariablesOkay()
 
-    const response = await fetch(`http://${url}:${appPort}/api/housekeeping/storage/mcp/findStorageBoxByBarcode/${barcode}`, {
+    const response = await fetch(`${serverUrl}/api/housekeeping/storage/mcp/findStorageBoxByBarcode/${barcode}`, {
       headers: {
         'x-api-key': `${apiKey}`, // Add the API key in the header
       },
@@ -290,7 +289,7 @@ server.registerTool(
 
     isEnvVariablesOkay()
 
-    const response = await fetch(`http://${url}:${appPort}/api/housekeeping/storage/mcp/findLocationByName/${locationName}/${matchAll}`, {
+    const response = await fetch(`${serverUrl}/api/housekeeping/storage/mcp/findLocationByName/${locationName}/${matchAll}`, {
       headers: {
         'x-api-key': `${apiKey}`, // Add the API key in the header
       },
@@ -329,7 +328,7 @@ server.registerTool(
       formData.append('storage_box_code', storageCode);
       formData.append('session_token', sessionToken);
 
-      const response = await axios.delete(`http://${url}:${appPort}/api/housekeeping/storage/mcp/delStorageBox`, {
+      const response = await axios.delete(`${serverUrl}/api/housekeeping/storage/mcp/delStorageBox`, {
         data: formData,
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -379,7 +378,7 @@ server.registerTool(
         'x-api-key': `${apiKey}`
       };
 
-      const response = await axios.put(`http://${url}:${appPort}/api/housekeeping/storage/mcp/editStorageBoxDescription`, formData, { headers });
+      const response = await axios.put(`${serverUrl}/api/housekeeping/storage/mcp/editStorageBoxDescription`, formData, { headers });
 
       const data = await JSON.stringify(response.data);
 
@@ -419,7 +418,7 @@ server.registerTool(
       };
 
       // Make a PUT request with headers
-      const response = await axios.put(`http://${url}:${appPort}/api/housekeeping/storage/mcp/moveStorageBox/`, formData, { headers });
+      const response = await axios.put(`${serverUrl}/api/housekeeping/storage/mcp/moveStorageBox/`, formData, { headers });
 
       const data = await response.data;
 
@@ -463,7 +462,7 @@ server.registerTool(
       };
 
       // Make a PUT request with headers
-      const response = await axios.put(`http://${url}:${appPort}/api/housekeeping/storage/mcp/renameStorageBox/`, formData, { headers });
+      const response = await axios.put(`${serverUrl}/api/housekeeping/storage/mcp/renameStorageBox/`, formData, { headers });
 
       const data = await JSON.stringify(response.data);
 
@@ -507,7 +506,7 @@ server.registerTool(
       };
 
       // Make a PUT request with headers
-      const response = await axios.put(`http://${url}:${appPort}/api/housekeeping/locations/mcp/renameLocation`, formData, { headers });
+      const response = await axios.put(`${serverUrl}/api/housekeeping/locations/mcp/renameLocation`, formData, { headers });
 
       //const data = await response.data;
       const data = await JSON.stringify(response.data);
@@ -543,13 +542,16 @@ server.registerTool(
       formData.append("username", username);
 
       // Define custom headers
+      // multipart/form-data
       const headers = {
-        'Content-Type': 'multipart/form-data',
+        'Content-Type': 'application/x-www-form-urlencoded',
         'x-api-key': `${apiKey}` // Example of a custom header
       };
 
       // Make a PUT request with headers
-      const response = await axios.post(`http://${url}:${appPort}/api/housekeeping/authenticate/mcp/getSessionToken`, formData, { headers });
+//      const response = await axios.post(`http://${url}:${appPort}/api/housekeeping/authenticate/mcp/getSessionToken`, formData, { headers });
+
+      const response = await axios.post(`${serverUrl}/api/housekeeping/authenticate/mcp/getSessionToken`, formData, { headers, maxRedirects:0 });
 
       const data = await response.data;
 
@@ -566,7 +568,13 @@ server.registerTool(
       };
 
     } catch (error) {
-      throw new Error(`Exception: ${error.message}`)
+      var errMsg = error.message 
+
+      if(errMsg.indexOf("status code 302") > 0){
+        errMsg += ". The HTTP to HTTPS redirect is causing a Node.js error. Please update the URI to use HTTPS in the claude_desktop_config.json file."; 
+      }
+
+      throw new Error(`Exception: ${errMsg}`)
     }
   }
 );
@@ -715,7 +723,7 @@ server.registerTool(
 
     isEnvVariablesOkay()
 
-    const thisUrl = `http://${adminUrl}:${adminPort}/api/housekeeping/admin/system/mcp/getSysInfo`
+    const thisUrl = `${adminUrl}/api/housekeeping/admin/system/mcp/getSysInfo`
     const response = await fetch(thisUrl, {
       headers: {
         'x-api-key': `${apiKey}`,
@@ -754,13 +762,14 @@ server.registerTool(
 
     isEnvVariablesOkay()
 
-    const thisUrl = `http://${adminUrl}:${adminPort}/api/housekeeping/admin/system/mcp/setSleepSchedule`
+    const thisUrl = `${adminUrl}/api/housekeeping/admin/system/mcp/setSleepSchedule`
+
+    const decodedUrl = new URL(`${serverUrl}`)
 
     try {
       // Create a FormData object
       const formData = new FormData();
-      formData.append("server_url", `${url}`);
-      formData.append("server_port", `${appPort}`);
+      formData.append("server_url", serverUrl);
       formData.append("session_token", sessionToken);
       formData.append("hour", sleepHour);
       formData.append("minute", sleepMinute);

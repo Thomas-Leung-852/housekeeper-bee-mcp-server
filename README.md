@@ -46,7 +46,13 @@ The claude_desktop_config.json file for Claude Desktop is located in different p
 **To find the file:**  
 
 1. Windows:
-Open File Explorer and paste `%APPDATA%\Claude\` into the address bar. You will find the claude_desktop_config.json file there. 
+Open File Explorer and paste `%APPDATA%\Claude\` into the address bar. You will find the claude_desktop_config.json file there.    
+Or click the "Edit Config" in Claude Desktop to open the "Claude" folder in file explorer.
+
+![](https://static.wixstatic.com/media/0d7edc_4b9482416af048d4ae90f1496ed9afe5~mv2.png)
+
+<br>
+
 2. The file is automatically created when you click "Edit Config" in the Claude Desktop settings, under the "Developer" section. or you can create it manully.
 
 <pre><code>
@@ -60,11 +66,9 @@ Open File Explorer and paste `%APPDATA%\Claude\` into the address bar. You will 
 			],
 			"env" :{
 				"HOUSEKEEPER_BEE_USER_API_KEY":"<b><i><font color="#F00">{YOUR HOUSEKEEPER BEE API KEY}</font></i></b>",				
-        	    "HOUSEKEEPER_BEE_URL":"<b><i><font color="#F00">{HOUSEKEEPER BEE APP SERVER IP}</font></i></b>",
-        		"HOUSEKEEPER_BEE_PORT":"<b><i><font color="#F00">{HOUSEKEEPER BEE APP SERVER PORT default 8080}</font></i></b>",
+        	    "HOUSEKEEPER_BEE_SERVER_URL":"<b><i><font color="#F00">{HOUSEKEEPER BEE server URL e.g. https://127.0.0.1:8443</font></i></b>",
+        		"HOUSEKEEPER_BEE_ADMIN_URL":"<b><i><font color="#F00">{HOUSEKEEPER BEE ADMIN server URL e.g. http://127.0.0.1:8088}</font></i></b>",
 				"HOUSEKEEPER_BEE_OUTPUT_FILE_PATH": "<b><i><font color="#F00">{local file folder - e.g. c:\\tmp\\ }</font></i></b>",
-				"HOUSEKEEPER_BEE_ADMIN_URL": "<b><i><font color="#F00">{HOUSEKEEPER BEE ADMIN SERVER IP default same as server ip}</font></i></b>",
-				"HOUSEKEEPER_BEE_ADMIN_PORT": "<b><i><font color="#F00">{HOUSEKEEPER BEE ADMIN SERVER PORT default 8088}</font></i></b>",
 			}
 		}
 	}
@@ -72,8 +76,8 @@ Open File Explorer and paste `%APPDATA%\Claude\` into the address bar. You will 
 </code></pre>
 
 ### Sample
-![](https://static.wixstatic.com/media/0d7edc_8da9e88359c745c2ad067d98f5f9b9db~mv2.png)
-    
+![](https://static.wixstatic.com/media/0d7edc_c728747f29454929883872a7e18fc110~mv2.png)
+    	
 <br>
 
 3. Restart the Claude Desktop
@@ -103,7 +107,7 @@ YouTube
 <br><br>
 ---
 *vNetic workshop - 2025*   
-*Last Update: 2025/08/02 by Thomas Leung*
+*Last Update: 2025/08/26 by Thomas Leung*
 
 
 
