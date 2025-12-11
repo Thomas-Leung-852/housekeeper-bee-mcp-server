@@ -20,7 +20,7 @@ const exportFilePath = process.env.HOUSEKEEPER_BEE_OUTPUT_FILE_PATH
 //=========================================================================================================================================================================
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// check environment variables defined
+// ANCHOR - Func :: Check environment variables defined
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 const isEnvVariablesOkay = () => {
   if (!apiKey) { throw new Error("\"HOUSEKEEPER_BEE_USER_API_KEY\" is not defined in environment variables.") }
@@ -30,7 +30,7 @@ const isEnvVariablesOkay = () => {
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// format date in ddMMyyHHmmss
+// ANCHOR - Func :: Format date in ddMMyyHHmmss
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 const formatDateTimeWithRandomNumber = () => {
   // Get the current date and time
@@ -55,14 +55,14 @@ const formatDateTimeWithRandomNumber = () => {
 };
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// get a new file name
+// ANCHOR - Func :: Get a new file name
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 const getNewFileName = (prefix, extension) => {
   return `${prefix}${formatDateTimeWithRandomNumber()}.${extension}`
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Export Json to excel
+// ANCHOR - Func :: Export Json to excel
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 const exportJsonToExcel = async (jsonData) => {
   //* Create a new workbook and a worksheet
@@ -87,7 +87,7 @@ const exportJsonToExcel = async (jsonData) => {
 };
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Function to convert JSON string to HTML table
+// ANCHOR - Func :: Convert JSON string to HTML table
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 const jsonToHtml = (jsonString) => {
   try {
@@ -127,7 +127,7 @@ const jsonToHtml = (jsonString) => {
 };
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// write text to local file folder
+// ANCHOR - Func :: write text to local file folder
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 const writeToTextFile = async (text, filename) => {
   try {
@@ -139,7 +139,7 @@ const writeToTextFile = async (text, filename) => {
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// read text file from local folder
+// ANCHOR - Func :: read text file from local folder
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 const readTextFromFile = async (filePath) => {
   var txt = ""
@@ -154,7 +154,7 @@ const readTextFromFile = async (filePath) => {
 };
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Get Session token
+// ANCHOR - Func :: Get Session token
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 const getSessionTokenFromFile = async () => {
 
@@ -177,7 +177,7 @@ const getSessionTokenFromFile = async () => {
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// JWT verify function
+// ANCHOR - Func :: JWT verify function
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 const decodeToken = (token) => {
   // Decode the token without verification
@@ -210,7 +210,7 @@ const server = new McpServer({
 })
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Tool :: find box name, detail by keywords
+// ANCHOR - Tool :: find box name, detail by keywords
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 server.registerTool(
   "findStorageBoxes",
@@ -243,7 +243,7 @@ server.registerTool(
 );
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Tool :: find boxes by barcode
+// ANCHOR - Tool :: find boxes by barcode
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 server.registerTool(
   "findStorageBoxesByBarcode",
@@ -275,7 +275,7 @@ server.registerTool(
 );
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Tool :: find location by name
+// ANCHOR - Tool :: find location by name
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 server.registerTool(
   "findStorageLocationByName",
@@ -308,7 +308,7 @@ server.registerTool(
 );
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Tool :: delete boxes
+// ANCHOR - Tool :: delete boxes
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 server.registerTool(
   "delStorageBox",
@@ -349,7 +349,7 @@ server.registerTool(
 );
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Tool :: edit boxes description
+// ANCHOR - Tool :: edit boxes description
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 server.registerTool(
   "editStorageBoxDescription",
@@ -393,7 +393,7 @@ server.registerTool(
 );
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Tool :: change storage box location
+// ANCHOR - Tool :: change storage box location
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 server.registerTool(
   "changeStorageBoxLocation",
@@ -433,7 +433,7 @@ server.registerTool(
 );
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Tool :: rename storage box
+// ANCHOR - Tool :: rename storage box
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 server.registerTool(
   "renameStorageBox",
@@ -477,7 +477,7 @@ server.registerTool(
 );
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Tool :: rename storage Location name
+// ANCHOR - Tool :: rename storage Location name
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 server.registerTool(
   "renameStorageLocationName",
@@ -522,7 +522,7 @@ server.registerTool(
 );
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Tool :: Get Session Token
+// ANCHOR - Tool :: Get Session Token
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 server.registerTool(
   "getHousekeeperBeeSessionToken",
@@ -549,9 +549,9 @@ server.registerTool(
       };
 
       // Make a PUT request with headers
-//      const response = await axios.post(`http://${url}:${appPort}/api/housekeeping/authenticate/mcp/getSessionToken`, formData, { headers });
+      //      const response = await axios.post(`http://${url}:${appPort}/api/housekeeping/authenticate/mcp/getSessionToken`, formData, { headers });
 
-      const response = await axios.post(`${serverUrl}/api/housekeeping/authenticate/mcp/getSessionToken`, formData, { headers, maxRedirects:0 });
+      const response = await axios.post(`${serverUrl}/api/housekeeping/authenticate/mcp/getSessionToken`, formData, { headers, maxRedirects: 0 });
 
       const data = await response.data;
 
@@ -568,10 +568,10 @@ server.registerTool(
       };
 
     } catch (error) {
-      var errMsg = error.message 
+      var errMsg = error.message
 
-      if(errMsg.indexOf("status code 302") > 0){
-        errMsg += ". The HTTP to HTTPS redirect is causing a Node.js error. Please update the URI to use HTTPS in the claude_desktop_config.json file."; 
+      if (errMsg.indexOf("status code 302") > 0) {
+        errMsg += ". The HTTP to HTTPS redirect is causing a Node.js error. Please update the URI to use HTTPS in the claude_desktop_config.json file.";
       }
 
       throw new Error(`Exception: ${errMsg}`)
@@ -580,7 +580,7 @@ server.registerTool(
 );
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Tool :: exportToJsonFile
+// ANCHOR - Tool :: exportToJsonFile
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 server.registerTool(
   "exportToJsonFile",
@@ -608,7 +608,7 @@ server.registerTool(
 );
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Tool :: exportToExcelFile
+// ANCHOR - Tool :: exportToExcelFile
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 server.registerTool(
   "exportToExcelFile",
@@ -631,7 +631,7 @@ server.registerTool(
 );
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Tool :: exportToHtmlFile
+// ANCHOR - Tool :: exportToHtmlFile
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 server.registerTool(
   "exportToHtmlFile",
@@ -663,7 +663,7 @@ server.registerTool(
 );
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Tool :: verifyLocSessionToken
+// ANCHOR - Tool :: verifyLocSessionToken
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 server.registerTool(
   "verifyLocSessionToken",
@@ -709,7 +709,7 @@ server.registerTool(
 );
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Tool :: Get Application Server status
+// ANCHOR - Tool :: Get Application Server status
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 server.registerTool(
   "getAppServerInfo",
@@ -744,7 +744,7 @@ server.registerTool(
 );
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Tool :: Set system sleep schedule
+// ANCHOR - Tool :: Set system sleep schedule
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 server.registerTool(
   "setSleepSchedule",
@@ -792,6 +792,124 @@ server.registerTool(
 
     } catch (error) {
       throw new Error(`Exception: ${error.message}`)
+    }
+  }
+);
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// ANCHOR - Tool :: remove storage box tags
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+server.registerTool(
+  "removeStorageBoxTags",
+  {
+    title: "remove Storage Box Tags",
+    description: `This tool uses the storage box code to delete its tags. The tags are provided as a comma-separated text. To remove the tags, a valid session token is required. 
+    You can obtain the storage box code using either the box name or the box barcode.`,
+    inputSchema: { storageCode: z.string(), commaTags: z.string(), sessionToken: z.string() }
+  },
+  async ({ storageCode, commaTags, sessionToken }) => {
+    isEnvVariablesOkay()
+
+    try {
+      // Create a FormData object
+      const formData = new FormData();
+      formData.append('session_token', sessionToken);
+      formData.append('tags', commaTags);
+
+      // Define custom headers
+      const headers = {
+        'Content-Type': 'multipart/form-data',
+        'x-api-key': `${apiKey}`
+      };
+
+      // Make a PUT request with headers
+      const response = await axios.patch(`${serverUrl}/api/housekeeping/storage/mcp/${storageCode}/tags/remove`, formData, { headers });
+
+      const data = await JSON.stringify(response.data);
+
+      return {
+        content: [{ type: "text", text: data }]
+      };
+
+    } catch (error) {
+      throw new Error(`{"status":"error",  "msg":"Exception: remove storage tag: ${error.message}"}`)
+    }
+  }
+);
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// ANCHOR - Tool :: add storage box tags
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+server.registerTool(
+  "addStorageBoxTags",
+  {
+    title: "add Storage Box Tags",
+    description: `This tool uses the storage box code to add tags. The tags are provided as a comma-separated text. To add tags, a valid session token is required. 
+    You can obtain the storage box code using either the box name or the box barcode.`,
+    inputSchema: { storageCode: z.string(), commaTags: z.string(), sessionToken: z.string() }
+  },
+  async ({ storageCode, commaTags, sessionToken }) => {
+    isEnvVariablesOkay()
+
+    try {
+      // Create a FormData object
+      const formData = new FormData();
+      formData.append('session_token', sessionToken);
+      formData.append('tags', commaTags);
+
+      // Define custom headers
+      const headers = {
+        'Content-Type': 'multipart/form-data',
+        'x-api-key': `${apiKey}`
+      };
+
+      // Make a PUT request with headers
+      const response = await axios.patch(`${serverUrl}/api/housekeeping/storage/mcp/${storageCode}/tags/add`, formData, { headers });
+
+      const data = await JSON.stringify(response.data);
+
+      return {
+        content: [{ type: "text", text: data }]
+      };
+
+    } catch (error) {
+      throw new Error(`{"status":"error",  "msg":"Exception: add storage tag: ${error.message}"}`)
+    }
+  }
+);
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// ANCHOR - Tool :: find storage box by tag
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+server.registerTool(
+  "findStorageBoxByTag",
+  {
+    title: "find the Storage Boxes by Tag",
+    description: `It uses the provided tag to search for related storage boxes.`,
+    inputSchema: { tag: z.string() }
+  },
+  async ({ tag }) => {
+    isEnvVariablesOkay()
+
+    try {
+      const response = await fetch(`${serverUrl}/api/housekeeping/storage/mcp/search/tag/${tag}`, {
+        headers: {
+          'x-api-key': `${apiKey}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error fetching data: ${response.status} ${response.statusText}`)
+      }
+
+      const data = await response.text();
+
+      return {
+        content: [{ type: "text", text: data }]
+      };
+
+    } catch (error) {
+      throw new Error(`{"status":"error",  "msg":"Exception: find box by tag: ${error.message}"}`)
     }
   }
 );
