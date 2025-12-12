@@ -844,8 +844,10 @@ server.registerTool(
   "addStorageBoxTags",
   {
     title: "add Storage Box Tags",
-    description: `This tool uses the storage box code to add tags. The tags are provided as a comma-separated text. To add tags, a valid session token is required. 
-    You can obtain the storage box code using either the box name or the box barcode.`,
+    description: `This tool uses the storage box code to add tags. The tags should be provided as a comma-separated list, with no spaces after the commas, and should be trimmed. 
+To add tags, a valid session token is required. You can obtain the storage box code using either the box name or the box barcode.
+IMPORTANT: Only letters and numbers are accepted! Special characters, such as single quotes and double quotes, are not supported. For example, 'man's' and "man"s" are invalid. 
+If the request contains invalid input, you should not process it and must display an error message!`,
     inputSchema: { storageCode: z.string(), commaTags: z.string(), sessionToken: z.string() }
   },
   async ({ storageCode, commaTags, sessionToken }) => {
