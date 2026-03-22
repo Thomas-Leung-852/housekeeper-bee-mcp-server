@@ -1,13 +1,13 @@
 # housekeeper-bee-mcp-server
 Housekeeper Bee MCP Server (STDIO)
 
-# Introduction   
+# 📌 Introduction   
            
 The MCP Server extends the functionality of the web-based Housekeeper Bee Application, which is designed for structural and fixed information flows. Using LLM, users are allowed to manage their storage box records in a dynamic and unstructured manner. The LLM client enhanced the UI/UX and user satisfaction. In the "Demonstration Clips" section, we show you how to use different languages and simple syntax to manage the storage asset records.
 
 <br>
 
-# Requirement
+# 📌Requirement
 
 - NodeJS v22 
 - Claude Desktop
@@ -15,7 +15,7 @@ The MCP Server extends the functionality of the web-based Housekeeper Bee Applic
       
 <br>      
 
-# System Architecture 
+# 📌System Architecture 
 
 ![](https://hackteam.io/images/build-your-first-mcp-server-with-typescript-in-under-10-minutes-diagram.png)
 
@@ -25,7 +25,7 @@ The MCP Server extends the functionality of the web-based Housekeeper Bee Applic
 
 <br>    
 
-# Installation 
+# 📌 Installation 
 
  - Clone the files from GitHub ( [https://github.com/Thomas-Leung-852/housekeeper-bee-mcp-server.git](https://github.com/Thomas-Leung-852/housekeeper-bee-mcp-server.git) )    
 
@@ -37,7 +37,7 @@ npm install -y
 
 <br>
 
-# Configuration 
+# 📌 Configuration 
 
 Open Claude Desktop confirguration file (claude_desktop_config.json) and add the following lines to the mcpServers section
 
@@ -84,7 +84,43 @@ Or click the "Edit Config" in Claude Desktop to open the "Claude" folder in file
 
 <br>
 
-# Demonstation Clips
+# 📌 Skills
+
+We create a number of skills for Claude Desktop. You can install them by following the steps below:     
+
+### 💠 Setup
+
+
+Upload to Claude:    
+
+* Go to Settings > Customize > Skills.    
+* Click the “+” button, then select “Upload a skill.”    
+* Upload your ZIP file.    
+
+Activate:    
+    
+After uploading, the skill will appear in the list.    
+Make sure it is enabled (toggled on).    
+
+<br>
+
+![](https://substackcdn.com/image/fetch/$s_!bQaO!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F466dc162-baad-4ddd-a453-788aa556eafd_2566x1564.png)
+
+***Source: www.substackcdn.com***
+
+### 💠 Skill
+
+1. Seasonal Storage Plan
+
+![](https://static.wixstatic.com/media/0d7edc_24cb707cdc244a289b90be38b1ede421~mv2.png)   
+
+2. Storage Treemap
+
+![](https://static.wixstatic.com/media/0d7edc_bd4c84d5609948a9a492b2f8d1625ffc~mv2.gif)   
+
+<br>
+
+# 📌 Demonstation Clips
 
 YouTube
 
@@ -103,11 +139,8 @@ YouTube
 * [Create Executive Summary & Infographic](https://youtu.be/LI0eJYVxSjs?si=XSVWChnA25IJt_iG)<img style="width:10px;" valign="middle" src="https://icons.iconarchive.com/icons/paomedia/small-n-flat/48/star-icon.png" >    
 
 
-
-<br><br>
 ---
-*vNetic workshop - 2025*   
-*Last Update: 2025/08/26 by Thomas Leung*
+*Last Update: 2026/03/22 by Thomas Leung*
 
 
 
